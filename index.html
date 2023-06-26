@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aplicativo de Tarefas</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Aplicativo de Tarefas</h1>
+
+  <h2>Adicionar Tarefa</h2>
+  <form id="addTaskForm">
+    <label for="taskName">Nome da Tarefa:</label>
+    <input type="text" id="taskName" required>
+
+    <label for="taskDate">Data de Realização:</label>
+    <input type="date" id="taskDate" required>
+
+    <label for="taskStatus">Estado:</label>
+    <select id="taskStatus">
+      <option value="fazer">Fazer</option>
+      <option value="feita">Feita</option>
+    </select>
+
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <h2>Tarefas a Fazer</h2>
+  <ul id="taskListFazer">
+    <!-- Aqui serão adicionadas as tarefas a fazer -->
+  </ul>
+
+  <h2>Tarefas Feitas</h2>
+  <ul id="taskListFeitas">
+    <!-- Aqui serão adicionadas as tarefas feitas -->
+  </ul>
+
+  <script src="main.js"></script>
+</body>
+</html>
