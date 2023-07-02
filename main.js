@@ -63,23 +63,6 @@ while (interruptor !== 0) {
     interruptor = exibirMenu()
 }
 
-// Foi feito um menu para a escolha de opções.(Matheus)   
- 
-// let interruptor = prompt.question("Insira 1 para iniciar o app lembretes ou 2 para encerrar");
-  
-  // while (interruptor === "1") {
-  //     adicionarLembrete();
-  //     visualizarLembrete();
-  //     ordenar();
-  //     alterar();
-  //     excluirLembrete();
-  
-  //     interruptor = prompt.question("Insira 1 para iniciar o app lembretes ou 2 para encerrar");
-  //     if (interruptor === "2") {
-  //         break;
-  //     }
-  // }
-  
 function adicionarLembrete() {
       let nome = prompt.question("Insira o nome do lembrete: ");
       let data = prompt.question("Insira a data no formato DD/MM/AAAA: ");
