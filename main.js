@@ -5,7 +5,7 @@ node main.js
 
 MELHORIAS:
 1- acrescentar opção de não acrescentar lembrete
-2- acrescentar opção de menu no final que dê para chamar as funções ao final com base nas opções apresentadas
+2- acrescentar opção de menu no final que dê para chamar as funções ao final com base nas opções apresentadas (Feito)
 
 */
 
@@ -23,21 +23,62 @@ let listaDeLembretes = [
     ["Ligar para o cliente", "10/07/2023", "a fazer", "Entrar em contato para discutir detalhes do projeto."],
     ["Organizar armário", "06/07/2023", "feito", "Arrumar roupas e objetos no armário."],
   ];
-  
-  let interruptor = prompt.question("Insira 1 para iniciar o app lembretes ou 2 para encerrar");
-  
-  while (interruptor === "1") {
+
+//Função feita para exibir um Menu de opções. (Matheus)
+function exibirMenu(){
+    console.log('********** MENU *********')
+    console.log('1 - Adicionar Lembrete')
+    console.log('2 - Visualizar Lembretes')
+    console.log('3 - Ordenar Lembretes')
+    console.log('4 - Alterar Lembretes')
+    console.log('5 - Excluir Lembrete')
+    console.log('0 - Sair')
+    return Number(prompt.question('Insira o número da opção desejada:'))
+}
+
+let interruptor = exibirMenu()
+
+while (interruptor !== 0) {
+  switch(interruptor){
+    case 1:
       adicionarLembrete();
-      visualizarLembrete();
-      ordenar();
-      alterar();
+      break
+    case 2:
+      visualizarLembrete()
+      break
+    case 3:
+      ordenar()
+      break
+    case 4:
+      alterar()
+      break
+    case 5:
       excluirLembrete();
-  
-      interruptor = prompt.question("Insira 1 para iniciar o app lembretes ou 2 para encerrar");
-      if (interruptor === "2") {
-          break;
-      }
+      break;
+    default:
+      console.log('Opção Inválida.')
+      break
   }
+
+    interruptor = exibirMenu()
+}
+
+// Foi feito um menu para a escolha de opções.(Matheus)   
+ 
+// let interruptor = prompt.question("Insira 1 para iniciar o app lembretes ou 2 para encerrar");
+  
+  // while (interruptor === "1") {
+  //     adicionarLembrete();
+  //     visualizarLembrete();
+  //     ordenar();
+  //     alterar();
+  //     excluirLembrete();
+  
+  //     interruptor = prompt.question("Insira 1 para iniciar o app lembretes ou 2 para encerrar");
+  //     if (interruptor === "2") {
+  //         break;
+  //     }
+  // }
   
 function adicionarLembrete() {
       let nome = prompt.question("Insira o nome do lembrete: ");
@@ -233,10 +274,10 @@ function adicionarLembrete() {
     console.log("Lembrete alterado com sucesso!");
   }
   
-  
+  //Foi feita uma alteração para que na hora de visualizar os lembretes apareça o número correspondente ao lembrete. (Matheus)
   function visualizarLembrete() {
       for (let i = 0; i < listaDeLembretes.length; i++) {
-          console.log(`Seus lembretes possuem os seguintes títulos: ${listaDeLembretes[i][0]}`);
+          console.log(`[${i + 1}] Título: ${listaDeLembretes[i][0]}`);
       }
   
       for (;;) {
