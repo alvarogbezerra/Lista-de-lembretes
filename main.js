@@ -1,27 +1,16 @@
-/*Dados para executar mais fácil:
-
-cd "C:\Users\alvar\REPOSITÓRIO PRINCIPAL\projeto-equipe-alvaro"
-node main.js
-
-MELHORIAS:
-1- acrescentar opção de não acrescentar lembrete
-2- acrescentar opção de menu no final que dê para chamar as funções ao final com base nas opções apresentadas (Feito)
-
-*/
-
 const prompt = require('readline-sync');
 
 //lembretes criados para teste
 let listaDeLembretes = [
-    ["Comprar mantimentos", "01/07/2023", "a fazer", "Lembre-se de comprar leite, pão e ovos."],
-    ["Enviar relatório", "05/07/2023", "a fazer", "Enviar relatório de vendas do mês anterior."],
-    ["Fazer exercícios", "02/07/2023", "feito", "Realizar 30 minutos de exercícios aeróbicos."],
-    ["Marcar consulta médica", "08/07/2023", "a fazer", "Agendar consulta com o médico de família."],
-    ["Pagar contas", "03/07/2023", "feito", "Realizar o pagamento das contas de água, luz e telefone."],
-    ["Estudar para o exame", "07/07/2023", "a fazer", "Revisar os principais tópicos para o exame de história."],
-    ["Fazer caminhada", "12/07/2023", "a fazer", "Realizar uma caminhada de 1 hora no parque."],
-    ["Ligar para o cliente", "10/07/2023", "a fazer", "Entrar em contato para discutir detalhes do projeto."],
-    ["Organizar armário", "06/07/2023", "feito", "Arrumar roupas e objetos no armário."],
+    ["Comprar mantimentos", "01/07/2023", "A fazer", "Lembre-se de comprar leite, pão e ovos."],
+    ["Enviar relatório", "05/07/2023", "A fazer", "Enviar relatório de vendas do mês anterior."],
+    ["Fazer exercícios", "02/07/2023", "Feito", "Realizar 30 minutos de exercícios aeróbicos."],
+    ["Marcar consulta médica", "08/07/2023", "A fazer", "Agendar consulta com o médico de família."],
+    ["Pagar contas", "03/07/2023", "Feito", "Realizar o pagamento das contas de água, luz e telefone."],
+    ["Estudar para o exame", "07/07/2023", "A fazer", "Revisar os principais tópicos para o exame de história."],
+    ["Fazer caminhada", "12/07/2023", "A fazer", "Realizar uma caminhada de 1 hora no parque."],
+    ["Ligar para o cliente", "10/07/2023", "A fazer", "Entrar em contato para discutir detalhes do projeto."],
+    ["Organizar armário", "06/07/2023", "Feito", "Arrumar roupas e objetos no armário."],
   ];
 
 //Função feita para exibir um Menu de opções. (Matheus)
@@ -63,6 +52,7 @@ while (interruptor !== 0) {
     interruptor = exibirMenu()
 }
 
+//Função para adicionar lembrete e para cancelar operação de adição de novos lembretes(Rodrigo)
 function adicionarLembrete() {
       let nome = prompt.question("Insira o nome do lembrete: ");
       let data = prompt.question("Insira a data no formato DD/MM/AAAA: ");
@@ -73,21 +63,22 @@ function adicionarLembrete() {
       }
       let situacao;
       while (true) {
-        situacao = Number(prompt.question("Para definir a situação do lembrete, digite 1 para 'feito' ou 2 para 'a fazer': "));
-        if (situacao === 1 || situacao === 2) {
+        situacao = prompt.question("Digite a situação do lembrete (1 para 'Feito', 2 para 'A fazer', ou 0 para não adicionar lembrete): ");
+        if (situacao === '0' || situacao === '1' || situacao === '2') {
           break;
         } else {
-          console.log("Opção inválida. Por favor, digite 1 ou 2.");
+          console.log("Opção inválida. Por favor, digite 0, 1 ou 2.");
         }
       }
-      
-      if (situacao === 1) {
-        situacao = "feito";
+      if (situacao === '1'){
+        situacao = 'Feito'
+      }else if (situacao === '2'){
+        situacao === 'A fazer'
+      }else {
+        console.log('Operação cancelada. Não foi adicionado nenhum lembrete.')
+        return
       }
-      
-      if (situacao === 2) {
-        situacao = "a fazer";
-      }
+       
       let informacoes = prompt.question("Insira aqui as informações que pretende adicionar ao lembrete. ");
   
       let novoLembrete = [nome, data, situacao, informacoes];
@@ -95,15 +86,15 @@ function adicionarLembrete() {
   }
   
   function ordenar() {
-    let ordenarOuNao = Number(prompt.question("Insira 1 para ordenar lembretes com o estado 'a fazer', 2 para ordenar com 'feito' ou 3 para seguir em frente. "));
+    let ordenarOuNao = Number(prompt.question("Insira 1 para ordenar lembretes com o estado 'A fazer', 2 para ordenar com 'Feito' ou 3 para seguir em frente. "));
     
     while (ordenarOuNao >= 1 && ordenarOuNao <= 3) {
       if (ordenarOuNao === 1) {
-        let ordenaPorNomeOuData = Number(prompt.question("Insira 1 para ordenar lembretes 'a fazer' por nome ou 2 para ordenar por data. "));
+        let ordenaPorNomeOuData = Number(prompt.question("Insira 1 para ordenar lembretes 'A fazer' por nome ou 2 para ordenar por data. "));
     
         if (ordenaPorNomeOuData === 1) {
           let lembretesAFazer = listaDeLembretes.filter(function(lembrete) {
-            return lembrete[2] === "a fazer";
+            return lembrete[2] === "A fazer";
           });
     
           if (lembretesAFazer.length > 0) {
@@ -120,16 +111,16 @@ function adicionarLembrete() {
               }
             });
     
-            console.log("Lembretes 'a fazer' ordenados por nome:");
+            console.log("Lembretes 'A fazer' ordenados por nome:");
             console.log(lembretesAFazer);
           } else {
-            console.log("Não há lembretes com o estado 'a fazer'.");
+            console.log("Não há lembretes com o estado 'A fazer'.");
           }
         }
     
         if (ordenaPorNomeOuData === 2) {
           let lembretesAFazer = listaDeLembretes.filter(function(lembrete) {
-            return lembrete[2] === "a fazer";
+            return lembrete[2] === "A fazer";
           });
     
           if (lembretesAFazer.length > 0) {
@@ -140,20 +131,20 @@ function adicionarLembrete() {
               return dataA - dataB;
             });
     
-            console.log("Lembretes 'a fazer' ordenados por data:");
+            console.log("Lembretes 'A fazer' ordenados por data:");
             console.log(lembretesAFazer);
           } else {
-            console.log("Não há lembretes com o estado 'a fazer'.");
+            console.log("Não há lembretes com o estado 'A fazer'.");
           }
         }
       }
     
       if (ordenarOuNao === 2) {
-        let ordenaPorNomeOuData = Number(prompt.question("Insira 1 para ordenar lembretes 'feito' por nome ou 2 para ordenar por data. "));
+        let ordenaPorNomeOuData = Number(prompt.question("Insira 1 para ordenar lembretes 'Feito' por nome ou 2 para ordenar por data. "));
     
         if (ordenaPorNomeOuData === 1) {
           let lembretesFeitos = listaDeLembretes.filter(function(lembrete) {
-            return lembrete[2] === "feito";
+            return lembrete[2] === "Feito";
           });
     
           if (lembretesFeitos.length > 0) {
@@ -170,10 +161,10 @@ function adicionarLembrete() {
               }
             });
     
-            console.log("Lembretes 'feito' ordenados por nome:");
+            console.log("Lembretes 'Feito' ordenados por nome:");
             console.log(lembretesFeitos);
           } else {
-            console.log("Não há lembretes com o estado 'feito'.");
+            console.log("Não há lembretes com o estado 'Feito'.");
           }
         }
     
@@ -190,10 +181,10 @@ function adicionarLembrete() {
               return dataA - dataB;
             });
     
-            console.log("Lembretes 'feito' ordenados por data:");
+            console.log("Lembretes 'Feito' ordenados por data:");
             console.log(lembretesFeitos);
           } else {
-            console.log("Não há lembretes com o estado 'feito'.");
+            console.log("Não há lembretes com o estado 'Feito'.");
           }
         }
       }
@@ -203,7 +194,7 @@ function adicionarLembrete() {
         break;
       }
     
-      ordenarOuNao = Number(prompt.question("Insira 1 para ordenar lembretes com o estado 'a fazer', 2 para ordenar com 'feito' ou 3 para seguir em frente. "));
+      ordenarOuNao = Number(prompt.question("Insira 1 para ordenar lembretes com o estado 'A fazer', 2 para ordenar com 'Feito' ou 3 para seguir em frente. "));
     }
     
     console.log("Opção inválida.");
@@ -235,7 +226,7 @@ function adicionarLembrete() {
   
     let novaSituacao;
     while (true) {
-      novaSituacao = Number(prompt.question("Para definir a nova situação do lembrete, digite 1 para 'feito' ou 2 para 'a fazer': "));
+      novaSituacao = Number(prompt.question("Para definir a nova situação do lembrete, digite 1 para 'Feito' ou 2 para 'A fazer': "));
       if (novaSituacao === 1 || novaSituacao === 2) {
         break;
       } else {
@@ -244,11 +235,11 @@ function adicionarLembrete() {
     }
   
     if (novaSituacao === 1) {
-      novaSituacao = "feito";
+      novaSituacao = "Feito";
     }
   
     if (novaSituacao === 2) {
-      novaSituacao = "a fazer";
+      novaSituacao = "A fazer";
     }
   
     let novasInformacoes = prompt.question("Insira as novas informações para o lembrete: ");
@@ -276,7 +267,7 @@ function adicionarLembrete() {
           }
       }
   }
-  
+//Adicionada uma ordem de parada no momento em que um lembrete é excluído(Rodrigo)
   function excluirLembrete() {
       for (;;) {
           let indiceDoLembrete = prompt.question("Insira o número do lembrete que você pretende excluir ou 'x' para sair da aba de exclusão de lembretes.");
@@ -288,6 +279,8 @@ function adicionarLembrete() {
           } else {
               let indice = parseInt(indiceDoLembrete) - 1;
               listaDeLembretes.splice(indice, 1);
+              console.log('Lembrete excluído com sucesso!')
+              break;
           }
       }
   }
