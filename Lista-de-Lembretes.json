@@ -1,0 +1,54 @@
+[{
+    "titulo": "Comprar mantimentos",
+    "data":"01/07/2023",
+    "situacao":"A fazer",
+    "informacao":"Lembre-se de comprar leite, pão e ovos."
+},
+{
+    "titulo": "Enviar relatório",
+    "data":"05/07/2023",
+    "situacao":"A fazer",
+    "informacao":"Enviar relatório de vendas do mês anterior."
+},
+{
+    "titulo": "Fazer exercícios",
+    "data":"02/07/2023",
+    "situacao":"Feito",
+    "informacao":"Realizar 30 minutos de exercícios aeróbicos."
+},
+{
+    "titulo": "Marcar consulta médica",
+    "data":"08/07/2023",
+    "situacao":"A fazer",
+    "informacao":"Agendar consulta com o médico de família"
+},
+{
+    "titulo": "Pagar contas",
+    "data":"03/07/2023",
+    "situacao":"Feito",
+    "informacao":"Realizar o pagamento das contas de água, luz e telefone"
+},
+{
+    "titulo": "Estudar para o exame",
+    "data":"07/07/2023",
+    "situacao":"A fazer",
+    "informacao":"Revisar os principais tópicos para o exame de história."
+},
+{
+    "titulo": "Fazer caminhada",
+    "data":"12/07/2023",
+    "situacao":"A fazer",
+    "informacao":"Realizar uma caminhada de 1 hora no parque."
+},
+{
+    "titulo": "Ligar para o cliente",
+    "data":"10/07/2023",
+    "situacao":"A fazer",
+    "informacao":"Entrar em contato para discutir detalhes do projeto"
+},
+{
+    "titulo": "Organizar armário",
+    "data":"06/07/2023",
+    "situacao":"Feito",
+    "informacao":"Arrumar roupas e objetos no armário."
+}]

@@ -1,19 +1,8 @@
 const readlineSync = require('readline-sync');
+const listaDeLembretes = require('./Lista-de-Lembretes.json')
 
-//lembretes criados para teste
-let listaDeLembretes = [
-    ["Comprar mantimentos", "01/07/2023", "A fazer", "Lembre-se de comprar leite, pão e ovos."],
-    ["Enviar relatório", "05/07/2023", "A fazer", "Enviar relatório de vendas do mês anterior."],
-    ["Fazer exercícios", "02/07/2023", "Feito", "Realizar 30 minutos de exercícios aeróbicos."],
-    ["Marcar consulta médica", "08/07/2023", "A fazer", "Agendar consulta com o médico de família."],
-    ["Pagar contas", "03/07/2023", "Feito", "Realizar o pagamento das contas de água, luz e telefone."],
-    ["Estudar para o exame", "07/07/2023", "A fazer", "Revisar os principais tópicos para o exame de história."],
-    ["Fazer caminhada", "12/07/2023", "A fazer", "Realizar uma caminhada de 1 hora no parque."],
-    ["Ligar para o cliente", "10/07/2023", "A fazer", "Entrar em contato para discutir detalhes do projeto."],
-    ["Organizar armário", "06/07/2023", "Feito", "Arrumar roupas e objetos no armário."],
-  ];
+console.log(listaDeLembretes)
 
-//Função feita para exibir um Menu de opções. (Matheus)
 function exibirMenu(){
     console.log('********** MENU *********')
     console.log('1 - Adicionar Lembrete')
@@ -52,8 +41,8 @@ while (interruptor !== 0) {
     interruptor = exibirMenu()
 }
 
-//Função para adicionar lembrete e para cancelar operação de adição de novos lembretes(Rodrigo)
-function adicionarLembrete() {
+
+  function adicionarLembrete() {
       let nome = readlineSync.question("Insira o nome do lembrete: ");
       let data = readlineSync.question("Insira a data no formato DD/MM/AAAA: ");
       let regex = /^\d{2}\/\d{2}\/\d{4}$/;
